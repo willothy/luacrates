@@ -1,0 +1,22 @@
+[package]
+name = "crates"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "crates"
+path = "src/lib.rs"
+crate-type = ["cdylib", "lib"]
+
+[dependencies]
+anyhow = "1.0.70"
+mlua = { version = "0.8.8", features = [
+    "serde",
+    "luajit",
+    "vendored",
+    "macros",
+    "serialize",
+    "module",
+] }
+nvim-utils = "0.1.12"
+toml = "0.7.3"
