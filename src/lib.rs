@@ -29,12 +29,17 @@ pub fn crates(lua: &Lua) -> LuaResult<LuaTable> {
 
             let crates = lua.create_table()?;
             for (k, v) in deps.iter() {
-                let version = v
-                    .get("version")
-                    .and_then(|v| v.as_str())
-                    .unwrap_or("unknown")
-                    .to_owned();
-                crates.set(k.to_owned(), version)?;
+                if v.is_table() {
+                    let version = v
+                        .get("version")
+                        .and_then(|v| v.as_str())
+                        .unwrap_or("unknown")
+                        .to_owned();
+                    crates.set(k.to_owned(), version)?;
+                } else {
+                    let version = v.as_str().unwrap_or("unknown").to_owned();
+                    crates.set(k.to_owned(), version)?;
+                }
             }
             Ok(crates)
         })?

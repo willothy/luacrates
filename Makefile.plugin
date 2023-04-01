@@ -3,7 +3,7 @@ PLUGIN_NAME=crates.so
 LUA_DIR =/home/willothy/projects/neovim/sidebar-crates/lua
 DEPS_DIR=/home/willothy/projects/neovim/sidebar-crates/lua/deps
 
-TARGET_DIR=/home/willothy/projects/neovim/sidebar-crates/target/release
+TARGET_DIR=/home/willothy/projects/neovim/sidebar-crates/target/debug
 
 .PHONY: deploy
 deploy:
